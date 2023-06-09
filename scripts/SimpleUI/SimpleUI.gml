@@ -1,4 +1,4 @@
-#macro SUI_VERSION "v0.1.0"
+#macro SUI_VERSION "v0.1.1"
 show_debug_message("[SUI] Welcome to SimpleUI " + SUI_VERSION + "!")
 
 global.__SUIEmptyFunction = function() {}
@@ -43,7 +43,7 @@ function SUICanvas(children = []) constructor {
 	}
 	
 	get = function(name) { return variable_struct_get(self, name) }
-	set = function(name, value) { return variable_struct_set(self, name, value) }
+	set = function(name, value) { variable_struct_set(self, name, value) }
 	
 	forEach = function(func, arr = self.children, parent = self) {
 		var l = array_length(arr)
@@ -275,21 +275,18 @@ function SUIElement(x, y, props = {}, children = []) constructor {
 	
 	get = function(prop_name, default_value = undefined) {
 		var value = variable_struct_get(self, prop_name)
-		if (is_struct(value) and instanceof(value) == "SUIBinding") {
-			var ans = value.get()
-		}
-		else {
-			ans = value
+		while (is_struct(value) and instanceof(value) == "SUIBinding") {
+			value = value.get()
 		}
 		
-		if (is_undefined(ans))
+		if (is_undefined(value))
 			return default_value
-		else return ans
+		else return value
 	}
 	
 	set = function(prop_name, value) {
 		var old_value = variable_struct_get(self, prop_name)
-		if (is_struct(old_value) and instanceof(old_value) == "SUIBinding") {
+		if(is_struct(old_value) and instanceof(old_value) == "SUIBinding") {
 			old_value.set(value)
 			return
 		}

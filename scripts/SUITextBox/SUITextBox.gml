@@ -24,9 +24,9 @@ function SUITextInput(x, y, w = 192, h = 48, text = "", placeholder = "", props 
 	
 	init = function() {
 		self.box_element = appendChild(new SUIBox(0, 0, get("w"), get("h"), props))
-		self.text_element = appendChild(new SUIText(10, get("h")/2, self.get("text"), props))
+		self.text_element = appendChild(new SUIText(10, get("h")/2, SUIBind("self.text", "self.text"), props))
 		self.cursor_element = appendChild(new SUISprite(190, get("h")/2, sSimpleUITextCursor, 0))
-		self.placeholder_element = appendChild(new SUIText(10, get("h")/2, self.get("placeholder_text")))
+		self.placeholder_element = appendChild(new SUIText(10, get("h")/2, SUIBind("self.placeholder_text", "self.placeholder_text")))
 		
 		box_element.hoverable = false
 		text_element.hoverable = false
@@ -73,7 +73,6 @@ function SUITextInput(x, y, w = 192, h = 48, text = "", placeholder = "", props 
 		cursor_element.set("h", text_element.get("text_h"))
 		
 		var _text = get("text")
-		text_element.set("text", _text)
 		
 		// should the placeholder be visible?
 		placeholder_element.set("visible", (_text == ""))

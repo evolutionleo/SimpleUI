@@ -18,11 +18,11 @@ function SUIBind(_get = SUIEmptyFunction, _set = SUIEmptyFunction) {
 			source = global
 		}
 		else if (source == "self" or source == "this") {
-			source = other
+			source = self
 		}
 		else if (source == "mouse") {	} // mouse.x/mouse.y are handled below
 		else {
-			source = other
+			source = self
 		}
 		
 		// mouse.x and mouse.y are special
