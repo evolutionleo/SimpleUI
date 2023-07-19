@@ -10,6 +10,7 @@ global.__SUIEmptyFunction = function() {}
 // if the mouse goes > this away from the border of a button, it will be "unclicked"
 #macro SUI_CLICK_OFFSET 96
 
+
 global.sui_canvases = []
 
 function SUICanvas(children = []) constructor {
@@ -42,7 +43,13 @@ function SUICanvas(children = []) constructor {
 		element.onSelect()
 	}
 	
+	///@param {String} name
+	///@returns {Any} value
 	get = function(name) { return variable_struct_get(self, name) }
+	
+	///@param {String} name
+	///@param {Any} value
+	///@returns {Undefined}
 	set = function(name, value) { variable_struct_set(self, name, value) }
 	
 	forEach = function(func, arr = self.children, parent = self) {
@@ -271,8 +278,23 @@ function SUIElement(x, y, props = {}, children = []) constructor {
 	getX = function() { return self.canvas.calculateX(self, self.parent) }
 	getY = function() { return self.canvas.calculateY(self, self.parent) }
 	
+	
+	///@function
+	///@desc you should call this function at the end of your custom UI elements' constructor
+	///@param {Struct} props
+	///@self {SUIElement}
+	function SUILoadProps(props) {
+		SUIInherit(self, global.SUI_DEFAULT_PROPS)
+		if (variable_struct_exists(global.SUI_DEFAULT_ELEMENT_PROPS, self.__element_type))
+			SUIInherit(self, global.SUI_DEFAULT_ELEMENT_PROPS[$ self.__element_type])
+		SUIInherit(self, props)
+	}
+	
 	#region get/set
 	
+	///@param {String} prop_name
+	///@param {Any} default_value
+	///@returns {Any} value
 	get = function(prop_name, default_value = undefined) {
 		var value = variable_struct_get(self, prop_name)
 		while (is_struct(value) and instanceof(value) == "SUIBinding") {
@@ -284,6 +306,8 @@ function SUIElement(x, y, props = {}, children = []) constructor {
 		else return value
 	}
 	
+	///@param {String} prop_name
+	///@param {Any} value
 	set = function(prop_name, value) {
 		var old_value = variable_struct_get(self, prop_name)
 		if(is_struct(old_value) and instanceof(old_value) == "SUIBinding") {
@@ -345,7 +369,13 @@ function SUIElement(x, y, props = {}, children = []) constructor {
 	distanceToMouse = function() {
 		var mx = SUIMouseX
 		var my = SUIMouseY
-		return SUIDistanceToRectangle(mx, my, self.get("left"), self.get("top"), self.get("right"), self.get("bottom"))
+		
+		var left = self.get("left")
+		var top = self.get("top")
+		var right = self.get("right")
+		var bottom = self.get("bottom")
+		
+		return SUIDistanceToRectangle(mx, my, left, top, right, bottom)
 	}
 	
 	

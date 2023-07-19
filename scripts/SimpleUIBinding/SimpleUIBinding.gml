@@ -1,3 +1,6 @@
+///@function SUIBind(_get, _set)
+///@param {Function|String} _get
+///@param {Function|String} _set
 function SUIBind(_get = SUIEmptyFunction, _set = SUIEmptyFunction) {
 	// get = "global.something" or get = "oPlayer.username"
 	if is_string(_get) {
