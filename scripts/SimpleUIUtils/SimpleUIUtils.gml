@@ -19,6 +19,7 @@ function SUIDistanceToRectangle(px, py, x1, y1, x2, y2) {
 
 #region Variable stuff
 
+///@function
 ///@param {Struct} dest
 ///@param {Struct} src
 function SUIInherit(dest, src) {
@@ -41,6 +42,9 @@ function SUIInherit(dest, src) {
 	return dest
 }
 
+///@function
+///@param {Any} scope
+///@param {String} varname
 function SUIVarGet(scope, varname) {
 	if (is_undefined(argument[1])) {
 		varname = argument[0]
@@ -58,7 +62,7 @@ function SUIVarGet(scope, varname) {
 	}
 }
 
-///@function SUIVarSet(scope, varname, value)
+///@function
 ///@param {Any} scope
 ///@param {String} varname
 ///@param {Any} value

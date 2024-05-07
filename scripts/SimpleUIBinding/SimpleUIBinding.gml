@@ -80,6 +80,7 @@ function SUIGetter(source, name) {
 	})
 }
 
+//Feather ignore GM1041
 function SUISetter(source, name) {
 	return method({source: source, name: name}, function(value) {
 		return SUIVarSet(source, name, value)

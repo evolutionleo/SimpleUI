@@ -1,3 +1,10 @@
+///@function SUIBox
+///@param {Real|Struct} x
+///@param {Real|Struct} y
+///@param {Real|Struct} w
+///@param {Real|Struct} h
+///@param {Struct} props
+///@param {Array} children
 function SUIBox(x, y, w, h, props = {}, children = []) : SUI_ELEMENT {
 	self.w = w
 	self.h = h

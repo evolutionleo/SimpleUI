@@ -1,3 +1,9 @@
+///@function SUIText
+///@param {Real|Struct} x
+///@param {Real|Struct} y
+///@param {String|Struct} text
+///@param {Struct} props
+///@param {Array} children
 function SUIText(x, y, text, props = {}, children = []) : SUI_ELEMENT {
 	self.text = text
 	self.color = c_white

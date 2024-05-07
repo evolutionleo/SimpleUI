@@ -1,3 +1,12 @@
+///@function SUITextInput
+///@param {Real|Struct} x
+///@param {Real|Struct} y
+///@param {Real|Struct} w
+///@param {Real|Struct} h
+///@param {String|Struct} text
+///@param {String|Struct} placeholder
+///@param {Struct} props
+///@param {Array} children
 function SUITextInput(x, y, w = 192, h = 48, text = "", placeholder = "", props = {}, children = []) : SUI_ELEMENT {
 	self.selectable = true // disable this to turn this into a plain textbox without input
 	

@@ -1,4 +1,4 @@
-#macro SUI_VERSION "v0.1.1"
+#macro SUI_VERSION "v0.1.4"
 show_debug_message("[SUI] Welcome to SimpleUI " + SUI_VERSION + "!")
 
 global.__SUIEmptyFunction = function() {}

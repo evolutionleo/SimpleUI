@@ -1,3 +1,9 @@
+///@function SUISprite
+///@param {Real|Struct} x
+///@param {Real|Struct} y
+///@param {Asset.GMSprite|Struct} spr
+///@param {Real|Struct} img
+///@param {Struct} props
 function SUISprite(x, y, spr, img = 0, props = {}, children = []) : SUI_ELEMENT {
 	self.spr = spr
 	self.img = img
@@ -16,6 +22,8 @@ function SUISprite(x, y, spr, img = 0, props = {}, children = []) : SUI_ELEMENT 
 	draw = function(x, y) {
 		//var xoff = sprite_get_xoffset(spr)
 		//var yoff = sprite_get_yoffset(spr)
+		var spr = get("spr")
+		var img = get("img")
 		
 		var sw = sprite_get_width(spr)
 		var sh = sprite_get_height(spr)

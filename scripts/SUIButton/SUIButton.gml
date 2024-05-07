@@ -1,3 +1,10 @@
+///@function SUIButton
+///@param {Real|Struct} x
+///@param {Real|Struct} y
+///@param {String|Struct} text
+///@param {Function|Struct} onClick
+///@param {Struct} props
+///@param {Array} children
 function SUIButton(x, y, text, onClick, props = {}, children = []) : SUI_ELEMENT {
 	self.text = text
 	self.onClick = onClick

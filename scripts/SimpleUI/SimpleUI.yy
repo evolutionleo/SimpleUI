@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "SimpleUI",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Scripts",
-    "path": "folders/SimpleUI/Scripts.yy",
+  "$GMScript":"",
+  "%Name":"SimpleUI",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SimpleUI",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/SimpleUI/Scripts.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
